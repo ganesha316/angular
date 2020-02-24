@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { CrudService } from '../crud.service';
+
 
 @Component({
   selector: 'app-right-section',
@@ -7,9 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RightSectionComponent implements OnInit {
 
-  constructor() { }
+  public products:any;
+
+  constructor(private crud:CrudService) { }
 
   ngOnInit() {
+    this.crud.select('product').subscribe(
+      (response) => {
+        this.products = response['data'];
+        console.log(response);
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
   }
 
 }
