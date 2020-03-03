@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CrudService } from '../crud.service';
+import { TransferService } from '../transfer.service';
 
 @Component({
   selector: 'app-left-section',
@@ -11,7 +12,7 @@ export class LeftSectionComponent implements OnInit {
   public categories:any;
   public brands:any;
 
-  constructor(private crud:CrudService) { }
+  constructor(private crud:CrudService, private ts:TransferService) { }
 
   ngOnInit() {
 
@@ -19,7 +20,7 @@ export class LeftSectionComponent implements OnInit {
     this.crud.select('get').subscribe(
       (response) => {
         this.categories = response['data'];
-        console.log(response);
+        console.log('category',this.categories);
       },
       (error) => {
         console.log(error);
@@ -30,12 +31,16 @@ export class LeftSectionComponent implements OnInit {
     this.crud.select('brand').subscribe(
       (response) => {
         this.brands = response['data'];
-        console.log(response);
+        console.log('brand',response);
       },
       (error) => {
         console.log(error);
       },
     )
+  }
+
+  passData(brandId){
+    this.ts.fetchByBrand({id:brandId});
   }
 
 }

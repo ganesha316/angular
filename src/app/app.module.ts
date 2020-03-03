@@ -17,11 +17,19 @@ import { SocialDirective } from './social.directive';
 import { DirectiveComponent } from './directive/directive.component';
 import { ProductDirective } from './product.directive';
 import { HttpClientModule } from '@angular/common/http';
+import { PasswordComponent } from './password/password.component';
+import { LogoutComponent } from './logout/logout.component';
+import { Guard1Guard } from './guard1.guard';
+import { Guard2Guard } from './guard2.guard';
+import { FilterCatComponent } from './filter-cat/filter-cat.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'login', component: LoginComponent },
+  { path: 'login', component: LoginComponent, canActivate:[Guard2Guard] },
   { path: 'cart', component: CartComponent },
+  { path: 'password', component: PasswordComponent, canActivate:[Guard1Guard]},
+  {path: 'filterCategory/:id1',component:FilterCatComponent},
+  { path: 'logout', component: LogoutComponent },
   { path: 'directive', component: DirectiveComponent },
   { path: '**', component:  PageNotFoundComponent},
 ];
@@ -41,7 +49,10 @@ const appRoutes: Routes = [
     PageNotFoundComponent,
     SocialDirective,
     DirectiveComponent,
-    ProductDirective
+    ProductDirective,
+    PasswordComponent,
+    LogoutComponent,
+    FilterCatComponent
   ],
   imports: [
     BrowserModule,
