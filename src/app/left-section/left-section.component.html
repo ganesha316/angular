@@ -4,7 +4,7 @@
         <div class="panel-group category-products" id="accordian"><!--category-productsr-->
             <div class="panel panel-default" *ngFor="let category of categories">
                 <div class="panel-heading">
-                    <h4 class="panel-title"><a href="#">{{category.name}}</a></h4>
+                    <h4 class="panel-title"><a href="/filterCategory/{{category.id}}">{{category.name}}</a></h4>
                 </div>
             </div>
         </div><!--/category-products-->
@@ -13,7 +13,7 @@
             <h2>Brands</h2>
             <div class="brands-name">
                 <ul class="nav nav-pills nav-stacked">
-                    <li *ngFor="let brand of brands"><a href="#"> <span class="pull-right"></span>{{brand.name}}</a></li>
+                    <li *ngFor="let brand of brands" (click)="passData(brand.id)"><a href="javascript:void(0)"> <span class="pull-right"></span>{{brand.name}}</a></li>
                 </ul>
             </div>
         </div><!--/brands_products-->

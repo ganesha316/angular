@@ -12,4 +12,8 @@ export class CrudService {
   select(name){
     return this.http.get(this.path+name);
   }
+
+  sendPost(name,data){
+    return this.http.post(this.path+name,data);
+  }
 }
