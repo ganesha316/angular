@@ -22,6 +22,7 @@ import { LogoutComponent } from './logout/logout.component';
 import { Guard1Guard } from './guard1.guard';
 import { Guard2Guard } from './guard2.guard';
 import { FilterCatComponent } from './filter-cat/filter-cat.component';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -57,7 +58,9 @@ const appRoutes: Routes = [
   imports: [
     BrowserModule,
     RouterModule.forRoot(appRoutes),
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

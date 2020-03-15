@@ -20,8 +20,6 @@ export class AuthService {
   }
 
   isLoggedIn(){
-    console.log(this.get());
-    return true;
-    // return this.get() != false;
+    return this.get();
   }
 }
