@@ -8,7 +8,7 @@ import { AuthService } from '../auth.service';
 })
 export class HeaderComponent implements OnInit {
 
-  public loggedIn:boolean;
+  public loggedIn:any;
   constructor(private auth:AuthService) {
     this.loggedIn = this.auth.isLoggedIn();
     console.log(this.loggedIn);
